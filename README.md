@@ -1,13 +1,19 @@
 # MediaCodecNode
 
-MediaCodecNode
+Multimedia processing service
 
-## QuickStart
+## API
+### svg to png
+url `http://127.0.0.1:7001/svg/png?svgurl=/Users/gaobowen/Downloads/222.svg&w=1920&h=1080` 
+receive `{"url":"/Users/gaobowen/Downloads/222.png"}`
+sametime create a png file in input directory
 
-<!-- add docs here for user -->
+### lottie to gif
+url `http://127.0.0.1:7001/lottie/gif?lottieurl=/Users/gaobowen/Downloads/test2/lottie.json`
+receive `{"url":"/Users/gaobowen/Downloads/test2/lottie.gif"}`
+sametime create a gif file in input directory
 
-see [egg docs][egg] for more detail.
-
+## Run
 ### Development
 
 ```bash
@@ -22,12 +28,3 @@ $ open http://localhost:7001/
 $ npm start
 $ npm stop
 ```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-
-[egg]: https://eggjs.org
