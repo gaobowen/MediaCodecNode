@@ -9,8 +9,7 @@
   "dependencies": {
     "egg": "^2.15.1",
     "egg-scripts": "^2.11.0",
-    "lottie-image": "^1.1.0",
-    "lottie-web": "^5.5.8"
+    "lottie-image": "^1.1.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
