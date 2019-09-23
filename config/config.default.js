@@ -25,14 +25,14 @@ module.exports = appInfo => {
     chromePathLinux: '/opt/google/chrome/chrome',
     chromePathMacOS: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     ffmpegPathWindows : 'ffmpeg',
-    ffmpegPathLinux : 'ffmpeg',
+    ffmpegPathLinux : '/data/mylib/ffmpeg',
     ffmpegPathMacOS : '/Users/gaobowen/Downloads/test2/ffmpeg',
   };
 
   config.cluster = {
     listen: {
       path: '',
-      port: 7001,
+      port: 7700,
       hostname: '',
     },
   };

@@ -24,7 +24,7 @@ class HomeController extends Controller {
     async svgpng() {
         const { ctx, service } = this;
         const svgurl = ctx.request.query.svgurl;
-        let retobj = { url: '' };
+        let retobj = { pngurl: '' };
         if (!fs.existsSync(svgurl)) {
             ctx.body = JSON.stringify(retobj);
             return;
@@ -33,7 +33,7 @@ class HomeController extends Controller {
         let height = ctx.request.query.h;
         width = parseInt(width);
         height = parseInt(height);
-        retobj.url = await service.svg.png({
+        retobj.pngurl = await service.svg.png({
             filePath: svgurl,
             width: width,
             height: height,
