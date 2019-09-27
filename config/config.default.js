@@ -24,9 +24,9 @@ module.exports = appInfo => {
     chromePathWindows: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
     chromePathLinux: '/opt/google/chrome/chrome',
     chromePathMacOS: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    ffmpegPathWindows : 'ffmpeg',
-    ffmpegPathLinux : '/data/mylib/ffmpeg',
-    ffmpegPathMacOS : '/Users/gaobowen/Downloads/test2/ffmpeg',
+    ffmpegPathWindows: 'ffmpeg',
+    ffmpegPathLinux: '/data/mylib/ffmpeg',
+    ffmpegPathMacOS: '/Users/gaobowen/Downloads/test2/ffmpeg',
   };
 
   config.cluster = {
