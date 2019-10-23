@@ -12,6 +12,7 @@ module.exports = app => {
   router.get('/lottie/gif', controller.home.lottiegif);
   router.get('/svg/png', svgmw, controller.home.svgpng);
   router.get('/svg/jpeg', svgmw, controller.home.svgjpeg);
+  router.post('/clipsvg', controller.home.clipsvg);
   router.get('/savepng', svgmw, controller.home.svgpng);// 兼容老版本SvgToImageByNode
 
 };

@@ -58,6 +58,38 @@ class HomeController extends Controller {
     });
     ctx.body = retobj;
   }
+
+  async clipsvg() {
+    const { ctx, service } = this;
+    const {
+      filePath,
+      width,
+      height,
+      clipid,
+      imgPath,
+      imgw,
+      imgh,
+      imgx,
+      imgy,
+      imgr,
+    } = ctx.request.body;
+    const retobj = { url: '' };
+    retobj.url = await service.svg.clip2png({
+      filePath,
+      width,
+      height,
+      clipData: {
+        clipid,
+        imgPath,
+        imgw: parseFloat(imgw),
+        imgh: parseFloat(imgh),
+        imgx: parseFloat(imgx),
+        imgy: parseFloat(imgy),
+        imgr: parseFloat(imgr),
+      },
+    });
+    ctx.body = retobj;
+  }
 }
 
 module.exports = HomeController;
