@@ -12,83 +12,101 @@ class HomeController extends Controller {
 
   async lottiegif() {
     const { ctx, service } = this;
-    const retobj = { url: '' };
-    if (fs.existsSync(ctx.request.query.lottieurl)) {
-      retobj.url = await service.lottie.gif(ctx.request.query.lottieurl);
+    try {
+      const retobj = { url: '' };
+      if (fs.existsSync(ctx.request.query.lottieurl)) {
+        retobj.url = await service.lottie.gif(ctx.request.query.lottieurl);
+      }
+      ctx.body = retobj;
+    } catch (error) {
+      console.error(error);
     }
-    ctx.body = retobj;
   }
 
   async svgpng() {
     const { ctx, service } = this;
-    const svgurl = ctx.request.query.svgurl;
-    const retobj = { pngurl: '' };
-    if (!fs.existsSync(svgurl)) {
-      ctx.body = JSON.stringify(retobj);
-      return;
+    try {
+      const svgurl = ctx.request.query.svgurl;
+      const retobj = { pngurl: '' };
+      if (!fs.existsSync(svgurl)) {
+        ctx.body = JSON.stringify(retobj);
+        return;
+      }
+      let width = ctx.request.query.w;
+      let height = ctx.request.query.h;
+      width = parseInt(width);
+      height = parseInt(height);
+      retobj.pngurl = await service.svg.png({
+        filePath: svgurl,
+        width,
+        height,
+      });
+      ctx.body = retobj;
+    } catch (error) {
+      console.error(error);
     }
-    let width = ctx.request.query.w;
-    let height = ctx.request.query.h;
-    width = parseInt(width);
-    height = parseInt(height);
-    retobj.pngurl = await service.svg.png({
-      filePath: svgurl,
-      width,
-      height,
-    });
-    ctx.body = retobj;
+
   }
 
   async svgjpeg() {
     const { ctx, service } = this;
-    const svgurl = ctx.request.query.svgurl;
-    const retobj = { url: '' };
-    if (!fs.existsSync(svgurl)) {
-      ctx.body = JSON.stringify(retobj);
-      return;
+    try {
+      const svgurl = ctx.request.query.svgurl;
+      const retobj = { url: '' };
+      if (!fs.existsSync(svgurl)) {
+        ctx.body = JSON.stringify(retobj);
+        return;
+      }
+      let width = ctx.request.query.w;
+      let height = ctx.request.query.h;
+      width = parseInt(width);
+      height = parseInt(height);
+      retobj.url = await service.svg.jpeg({
+        filePath: svgurl,
+        width,
+        height,
+      });
+      ctx.body = retobj;
+    } catch (error) {
+      console.error(error);
     }
-    let width = ctx.request.query.w;
-    let height = ctx.request.query.h;
-    width = parseInt(width);
-    height = parseInt(height);
-    retobj.url = await service.svg.jpeg({
-      filePath: svgurl,
-      width,
-      height,
-    });
-    ctx.body = retobj;
   }
 
   async clipsvg() {
     const { ctx, service } = this;
-    const {
-      filePath,
-      width,
-      height,
-      clipid,
-      imgPath,
-      imgw,
-      imgh,
-      imgx,
-      imgy,
-      imgr,
-    } = ctx.request.body;
-    const retobj = { url: '' };
-    retobj.url = await service.svg.clip2png({
-      filePath,
-      width,
-      height,
-      clipData: {
+    try {
+      const {
+        filePath,
+        width,
+        height,
         clipid,
         imgPath,
-        imgw: parseFloat(imgw),
-        imgh: parseFloat(imgh),
-        imgx: parseFloat(imgx),
-        imgy: parseFloat(imgy),
-        imgr: parseFloat(imgr),
-      },
-    });
-    ctx.body = retobj;
+        imgw,
+        imgh,
+        imgx,
+        imgy,
+        imgr,
+      } = ctx.request.body;
+      const retobj = { url: '' };
+      retobj.url = await service.svg.clip2png({
+        filePath,
+        width,
+        height,
+        clipData: {
+          clipid,
+          imgPath,
+          imgw: parseFloat(imgw),
+          imgh: parseFloat(imgh),
+          imgx: parseFloat(imgx),
+          imgy: parseFloat(imgy),
+          imgr: parseFloat(imgr),
+        },
+      });
+      ctx.body = retobj;
+    } catch (error) {
+      console.error(error);
+    }
+
   }
 }
 
