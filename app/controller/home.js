@@ -106,7 +106,15 @@ class HomeController extends Controller {
     } catch (error) {
       console.error(error);
     }
+  }
 
+  async getclipsvg() {
+    const { ctx, service } = this;
+    if (service.svg.clip2png) {
+      ctx.body = '/clipsvg [service.svg.clip2png] available !';
+    } else {
+      ctx.body = '/clipsvg [service.svg.clip2png] undefine !';
+    }
   }
 }
 
